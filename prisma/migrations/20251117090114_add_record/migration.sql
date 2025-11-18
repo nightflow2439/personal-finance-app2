@@ -1,0 +1,8 @@
+-- CreateTable
+CREATE TABLE "Record" (
+    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "date" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "amount" REAL NOT NULL,
+    "type" TEXT NOT NULL,
+    "note" TEXT
+);
