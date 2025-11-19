@@ -1,5 +1,6 @@
 import { prisma } from "@/lib/prisma";
 import { deleteRecord, editRecord } from "@/lib/actions";
+import ModeSelector from "@/ui/mode_selector";
 
 export default async function Homepage() {
   const records = await prisma.record.findMany();
@@ -7,7 +8,8 @@ export default async function Homepage() {
   return (
     <>
       <h1>Homepage</h1>
-      {records.map((record) => (
+      <ModeSelector />
+      {records.map((record) =>
         <div key={record.id}>
           <p>
             {record.id}-{record.date.toString()}-{record.amount}-{record.type}-
@@ -22,8 +24,7 @@ export default async function Homepage() {
             <input type="submit" value="删除" />
           </form>
         </div>
-        
-      ))}
+      )}
     </>
   );
 }
