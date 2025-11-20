@@ -7,7 +7,7 @@ export default async function Homepage() {
 
   return (
     <>
-      <h1>Homepage</h1>
+      <h1>主页</h1>
       <ModeSelector />
       {records.map((record) =>
         <div key={record.id}>
