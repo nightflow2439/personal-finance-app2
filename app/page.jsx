@@ -2,12 +2,12 @@ import { prisma } from "@/lib/prisma";
 import { deleteRecord, editRecord } from "@/lib/actions";
 import ModeSelector from "@/ui/mode_selector";
 
-export default async function Homepage() {
+export default async function Overview() {
   const records = await prisma.record.findMany();
 
   return (
     <>
-      <h1>主页</h1>
+      <h1>收支总览</h1>
       <ModeSelector />
       {records.map((record) =>
         <div key={record.id}>

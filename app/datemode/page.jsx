@@ -6,6 +6,7 @@ import Records from "@/ui/records";
 
 export default async function Page({ searchParams }) {
   const resolvedSearchParams = await searchParams;
+  
   if (resolvedSearchParams.date) {
     const date = resolvedSearchParams.date;
     const records = await getRecordsByDate(date);
@@ -21,6 +22,7 @@ export default async function Page({ searchParams }) {
   const records = await prisma.record.findMany();
   const dateSet = new Set(records.map(record => record.date.toString().slice(0, 15)));
   const dateArray = Array.from(dateSet);
+
   return (
     <>
       <h1>按日查看</h1>
