@@ -1,4 +1,5 @@
 import { updateRecord } from "@/lib/actions";
+import { prisma } from "@/lib/prisma";
 
 export default async function Page({ params }) {
   const resolvedParams = await params;
@@ -23,7 +24,7 @@ export default async function Page({ params }) {
         <input id="note" name="note" type="text" defaultValue={record.note} />
         <br />
         <input type="hidden" name="id" value={id} />
-        <input type="submit" value="提交" />
+        <input type="submit" value="保存" />
       </form>
     </>
   )
