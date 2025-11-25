@@ -3,6 +3,7 @@ import Link from "next/link";
 import { getRecordsByMonth } from "@/lib/actions";
 import ModeSelector from "@/ui/mode_selector";
 import Records from "@/ui/records";
+import { aggregateAll } from "@/lib/aggregate";
 
 
 export default async function Page({searchParams}) {
@@ -11,9 +12,13 @@ export default async function Page({searchParams}) {
   if (resolvedSearchParams.month) {
     const month = resolvedSearchParams.month;
     const records = await getRecordsByMonth(month);
+    const {income, expense, total} = aggregateAll(records);
     return (
       <>
         <h1>{month}</h1>
+        <h3 style={{ whiteSpace: "pre" }}>
+          总收入:{income}       总支出:{expense}       净收入:{total}
+        </h3>
         <Link href="/monthmode">Back</Link>
         <Records records={records} />
       </>
@@ -30,7 +35,9 @@ export default async function Page({searchParams}) {
       <h1>按月查看</h1>
       <ModeSelector />
       {monthArray.map(month => (
-        <Link key={month} href={`/monthmode?month=${month}`}>{month}</Link>
+        <div key={month}>
+          <Link href={`/monthmode?month=${month}`}>{month}</Link>
+        </div>
       ))}
     </>
   )
