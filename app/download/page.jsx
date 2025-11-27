@@ -12,7 +12,7 @@ async function downloadCSV() {
       localDate,
       r.type,
       r.amount,
-      r.note.replace(/,/g, " "),
+      (r.note ?? "").replace(/,/g, " "),
       JSON.stringify(r.categories ?? null)
     ];
   });

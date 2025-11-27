@@ -277,3 +277,99 @@ button.delete:hover {
 .add-category-form input[type="text"] {
   flex: 1;
 }
+
+.month-list,
+.date-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.month-link,
+.date-link {
+  display: inline-block;
+  padding: 10px 16px;
+  background: #f0f7ff;
+  border: 1px solid #cfe4ff;
+  border-radius: 10px;
+  font-weight: 600;
+  color: #2c3e50;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.month-link:hover,
+.date-link:hover {
+  background: #d7ebff;
+  border-color: #a0d4ff;
+}
+
+/* 页面整体布局 */
+.layout-body {
+  display: flex;
+  min-height: 100vh;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f0f4f8;
+  /* 清新背景 */
+  color: #333;
+  margin: 0;
+}
+
+/* 左侧导航栏 */
+.sidebar {
+  width: 220px;
+  background-color: #ffffff;
+  /* 浅色背景 */
+  color: #333;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 12px;
+  /* 圆角 */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  /* 柔和阴影 */
+}
+
+/* 导航标题 */
+.sidebar-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 30px;
+  text-align: center;
+  color: #2c3e50;
+}
+
+/* 导航链接容器 */
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* 导航链接 */
+.sidebar-link {
+  text-decoration: none;
+  color: #333;
+  padding: 10px 15px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  font-weight: 500;
+  background-color: #f9f9f9;
+  /* 浅灰背景 */
+}
+
+/* 悬停效果 */
+.sidebar-link:hover {
+  background-color: #e0f7ea;
+  /* 柔和亮色悬停 */
+  transform: translateX(3px);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* 主内容区 */
+.main-content {
+  flex: 1;
+  padding: 30px;
+  background-color: #f0f4f8;
+}

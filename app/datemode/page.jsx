@@ -18,18 +18,24 @@ export default async function Page({ searchParams }) {
     )
   }
 
-  const records = await prisma.record.findMany();
-  const dateSet = new Set(records.map(record => record.date.toString().slice(0, 15)));
+  const records = await prisma.record.findMany({
+    orderBy:{
+      date: 'desc'
+    }
+  });
+  const dateSet = new Set(records.map(record => record.date.toISOString().split("T")[0]));
   const dateArray = Array.from(dateSet);
 
   return (
     <>
-      <h1>按日查看</h1>
-      {dateArray.map(date =>
-        <div key={date}>
-          <Link href={`/datemode?date=${date}`}>{date}</Link>
-        </div>
-      )}
+      <h1 className="page-title">按日查看</h1>
+      <div className="date-list">
+        {dateArray.map(date => (
+          <Link key={date} href={`/datemode?date=${date}`} className="date-link">
+            {date}
+          </Link>
+        ))}
+      </div>
     </>
-  )
+  );
 }

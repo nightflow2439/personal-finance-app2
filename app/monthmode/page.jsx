@@ -19,19 +19,25 @@ export default async function Page({searchParams}) {
     )
   }
 
-  const records = await prisma.record.findMany();
+  const records = await prisma.record.findMany({
+    orderBy:{
+      date: 'desc'
+    }
+  });
   const monthSet = new Set(records.map(record => record.date.toString().slice(4, 7) + ' ' 
   + record.date.toString().slice(11, 15)));
   const monthArray = Array.from(monthSet);
 
   return (
     <>
-      <h1>按月查看</h1>
-      {monthArray.map(month => (
-        <div key={month}>
-          <Link href={`/monthmode?month=${month}`}>{month}</Link>
-        </div>
-      ))}
+      <h1 className="page-title">按月查看</h1>
+      <div className="month-list">
+        {monthArray.map(month => (
+          <Link key={month} href={`/monthmode?month=${month}`} className="month-link">
+            {month}
+          </Link>
+        ))}
+      </div>
     </>
-  )
+  );
 }

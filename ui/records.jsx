@@ -34,9 +34,9 @@ export default function Records({ records, title, income, expense, total }) {
           <tbody>
             {records.map(r => (
               <tr key={r.id}>
-                <td>{r.date.toISOString()}</td>
-                <td>{r.date.toString().slice(0, 24)}</td>
-                <td>{r.type}</td>
+                <td>{r.date.toISOString().split("T")[0]}</td>
+                <td>{r.date.toString().slice(16, 24)}</td>
+                <td>{r.type == "income" ? "收入" : "支出"}</td>
                 <td>{r.amount}</td>
                 <td>{r.note}</td>
                 <td>{r.categories?.join(" ")}</td>

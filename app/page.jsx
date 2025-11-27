@@ -4,7 +4,11 @@ import { aggregateAll } from "@/lib/aggregate";
 import Records from "@/ui/records";
 
 export default async function Overview() {
-  const records = await prisma.record.findMany();
+  const records = await prisma.record.findMany({
+    orderBy:{
+      date: 'desc'
+    }
+  });
   const {income, expense, total} = aggregateAll(records);
 
   return (

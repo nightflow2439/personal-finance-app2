@@ -9,11 +9,12 @@ export default async function Page({ params }) {
       id: id
     }
   });
+  console.log(record.categories);
   return (
     <div className="page-container">
       <h3 className="section-title">当前标签</h3>
 
-      {record.categories?.map((cat, index) => (
+      {record.categories.map((cat, index) => (
         <div className="category-item" key={index}>
           <div className="category-name">{cat}</div>
 
