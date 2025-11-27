@@ -1,5 +1,4 @@
 import { prisma } from "@/lib/prisma";
-import { deleteRecord, editRecord, handleCategory } from "@/lib/actions";
 import { aggregateAll } from "@/lib/aggregate";
 import Records from "@/ui/records";
 
