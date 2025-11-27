@@ -1,6 +1,29 @@
+'use client'
+import { useState } from "react";
 import { selectMode, editRecord, deleteRecord } from "@/lib/actions"
+import ReactMarkdown from "react-markdown";
 
 export default function Records({ records, title, income, expense, total }) {
+  const [aiResult, setAiResult] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  async function handleAIAnalyze() {
+    setLoading(true);
+    try {
+      const res = await fetch("/api/ai", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ records }),
+      });
+      const data = await res.json();
+      setAiResult(data.result);
+    } catch (err) {
+      setAiResult("AI分析失败，请稍后重试。");
+      console.error(err);
+    }
+    setLoading(false);
+  }
+
   return (
     <div className="container">
       <h1 className="page-title">{title}</h1>
@@ -54,6 +77,18 @@ export default function Records({ records, title, income, expense, total }) {
             ))}
           </tbody>
         </table>
+      </div>
+
+      <div className="ai-analysis">
+        <button onClick={handleAIAnalyze} disabled={loading}>
+          {loading ? "分析中..." : "AI分析"}
+        </button>
+        {aiResult && (
+          <div className="ai-result">
+            <h3>AI分析结果：</h3>
+            <ReactMarkdown>{aiResult}</ReactMarkdown>
+          </div>
+        )}
       </div>
     </div>
   )
