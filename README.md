@@ -14,38 +14,55 @@
 ## 快速开始
 
 ### 前置要求
+
 - Node.js 18+ 
 - npm包管理器
 
 ### 安装依赖
+
+```
 npm install
+```
 
 ### 初始化数据库
+
+```
 npx prisma migrate dev --name init
 npx prisma db seed
+```
 
 ### 运行
+
+```
 npm run dev
+```
 应用将在 `http://localhost:3000` 启动
 
 ### env配置(如要使用ai功能)
+
+```
 QWEN_API_KEY=你的通义千问api-key
 QWEN_API_URL=https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions
+```
 
 ## 技术栈
 
 ### 前端
+
 - **Next.js 16.0.3** - React框架，支持服务端渲染和API路由
 - **React 19.2.0** - UI库
 - **Recharts 3.5.0** - 数据可视化图表库
 - **React Markdown 10.1.0** - Markdown渲染
 
 ### 后端
+
 - **Prisma 6.19.0** - ORM数据库工具
 - **SQLite** - 轻量级数据库
 - **通义千问 API** - AI分析功能
 
 ## 文件结构
+
+```
 personal-finance-app2/
 ├── app/                          # Next.js应用目录
 │   ├── globals.css              # 全局样式
@@ -86,11 +103,14 @@ personal-finance-app2/
 ├── postcss.config.mjs           # PostCSS配置
 ├── package.json                 # 项目依赖配置
 └── README.md                    # 项目说明文档
+```
 
 ## 数据库
+
 该项目使用SQLite数据库，包含以下主要模型：
 
 ### Record 模型
+
 - `id` (Int) - 唯一标识符，自动增长
 - `date` (DateTime) - 交易日期，默认为当前时间
 - `amount` (Float) - 交易金额
@@ -99,7 +119,9 @@ personal-finance-app2/
 - `categories` (Json) - 分类标签（JSON格式）
 
 ## 许可
+
 MIT License
 
 ## 贡献
+
 欢迎提交问题和改进建议！
