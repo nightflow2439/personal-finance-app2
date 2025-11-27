@@ -4,6 +4,6 @@ CREATE TABLE "Record" (
     "date" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "amount" REAL NOT NULL,
     "type" TEXT NOT NULL,
-    "note" TEXT NOT NULL,
+    "note" TEXT,
     "categories" JSONB
 );

@@ -12,7 +12,7 @@ model Record {
   date       DateTime   @default(now())
   amount     Float
   type       RecordType
-  note       String
+  note       String?
   categories Json?
 }
 

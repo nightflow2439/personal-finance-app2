@@ -13,7 +13,10 @@ export default function Add() {
         <input id="expense" name="type" type="radio" value="expense" />
         <br />
         <label htmlFor="note">备注</label>
-        <input id="note" name="note" type="text" />
+        <input id="note" name="note" type="text" placeholder="可选" />
+        <br />
+        <label htmlFor="categories">标签</label>
+        <input id="categories" name="categories" type="text" placeholder="可选" />
         <br />
         <input type="submit" value="提交" />
       </form>
